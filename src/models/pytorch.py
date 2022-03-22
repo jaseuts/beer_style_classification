@@ -53,8 +53,8 @@ class PytorchMultiClass(nn.Module):
     def __init__(self, num_features, num_classes):
         super(PytorchMultiClass, self).__init__()
         
-        self.layer_1 = nn.Linear(num_features, 128)
-        self.layer_out = nn.Linear(128, num_classes)
+        self.layer_1 = nn.Linear(num_features, 256)
+        self.layer_out = nn.Linear(256, num_classes)
         self.softmax = nn.Softmax(dim=1)
 
     def forward(self, x):
@@ -63,7 +63,7 @@ class PytorchMultiClass(nn.Module):
         return self.softmax(x)              
       
 
-def train_classification(train_data, model, criterion, optimizer, batch_size, device, scheduler=None, generate_batch=None):
+def train_classification(train_data, model, criterion, optimizer, batch_size, device, weighted_sampler, scheduler=None, generate_batch=None):
     """Train a Pytorch multi-class classification model
 
     Parameters
@@ -99,7 +99,8 @@ def train_classification(train_data, model, criterion, optimizer, batch_size, de
     train_acc = 0
     
     # Create data loader
-    data = DataLoader(train_data, batch_size=batch_size, shuffle=True, collate_fn=generate_batch)
+    data = DataLoader(train_data, batch_size=batch_size, 
+                       sampler=weighted_sampler, collate_fn=generate_batch)
     
     # Iterate through data by batch of observations
     for feature, target_class in data:

@@ -1,7 +1,14 @@
 Advanced DSI Assignment 2
 ==============================
 
-Building a custom Neural Network to classify beer typess such as appearance, aroma, palate or taste
+Building a custom Neural Network to classify beer typess such as appearance, aroma, palate or taste etc.
+
+
+CLI commands to run the notebook on a docker container:
+`cd path/to/project_folder`
+`docker build -t pytorch-notebook:latest .`
+`docker run  -dit --rm --name beer_prediction -p 8888:8888 -e JUPYTER_ENABLE_LAB=yes -v ~/path/to/project_folder:/home/jovyan/work pytorch-notebook:latest`
+
 
 Project Organization
 ------------
