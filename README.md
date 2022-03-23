@@ -1,7 +1,7 @@
 Advanced DSI Assignment 2
 ==============================
 
-Building a custom Neural Network to classify beer typess such as appearance, aroma, palate or taste etc.
+Building a custom Neural Network to classify beer typess based on features such as appearance, aroma, palate or taste etc.
 
 
 CLI commands to run the notebook on a docker container:  
